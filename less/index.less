@@ -82,8 +82,8 @@ html, body {
 	flex-wrap: wrap;
 }
 
-.autoMargin(@topBottom) {
-	margin: @topBottom auto;
+.autoMargin(@topBottom, @leftRight: auto) {
+	margin: @topBottom @leftRight;
 }
 
 
@@ -148,6 +148,27 @@ nav {
 		padding-top: 2rem;
 		font-size: 2.5rem;
 		width: 100%;
+	}
+}
+
+.portfolio {
+	border: none;
+	margin-top: -9rem;
+	h1 {
+		font-size: 1.8rem;
+		padding: 0;
+		&:after {
+			content: '';
+			display: block;
+			width: 8rem;
+			.autoMargin(.5rem);
+		}
+	}
+
+	h2 {
+		font-size: 1.5rem;
+		padding-top: .5rem;
+		
 	}
 }
 
@@ -270,7 +291,7 @@ main {
 	.flexDisplay(space-evenly, row);
 
 	li {
-		transition: 0.5s;
+		transition: transform 0.5s;
 		&:hover {
 			transform: scale(1.3);
 		}
@@ -287,3 +308,60 @@ main {
 		}
 	}
 }
+
+.project-wrapper {
+	background-color: @mainColor;
+	.flexDisplay(center, row);
+
+	@media (max-width: 500px) {
+		.flexDisplay(space-evenly, column);
+	}
+
+	.project-tile {
+		background-color: @secondaryColor;
+		.flexDisplay(space-evenly, column);
+		padding: 2rem;
+		.autoMargin(2rem, 5rem);
+		width: 33%;
+		cursor: pointer;
+
+		@media (max-width: 500px) {
+			width: 90%;
+			.autoMargin(2rem, auto);
+		}
+
+		h3 {
+			text-transform: uppercase;
+			letter-spacing: 2px;
+			text-align: center;
+		}
+
+		img {
+			width: 90%;
+			display: block;
+			.autoMargin(2rem, auto);
+			opacity: .5;
+			transition: opacity 1s;
+
+			&:hover {
+				opacity: 1;
+			}
+		}
+
+		p {
+			.autoMargin(2rem);
+			font-style: italic;
+			text-align: justify;
+			line-height: 1.3;
+			width: 90%;
+		}
+
+		.skills-wrapper {
+			width: 100%;
+			.autoMargin(.5rem, 0);
+		}
+
+
+	}
+}
+
